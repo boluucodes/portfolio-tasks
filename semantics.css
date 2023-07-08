@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     width: 100%;
 }
@@ -17,6 +20,29 @@ header{
     color: rgb(21, 94,239);
     font-family: 'Manrope', sans-serif;
     font-weight: 700
+}
+.nav-logo{
+    border: 1px solid rgb(21, 94,239);
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    text-align: left;
+    padding: 1rem;
+    margin: .5rem;
+}
+.xclose{
+    position: relative;
+    z-index: 7;
+}
+.xclose .line:first-of-type{
+    transform: rotate(135deg) translateY(-5px);
+}
+.xclose .line:nth-child(2){
+    transform: rotate(-135deg) translateY(5px);
+}
+.xclose .line{
+    transition: all .5s ease-in;
 }
 header,.logo{
     display: flex;
@@ -46,7 +72,7 @@ nav ul li:last-child{
     padding: 5px;
     color: rgb(21, 94,239);
 }
-main,section{
+.main,section{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,6 +84,11 @@ main,section{
 .welcome{
     margin: 10% .5%;
     width: 100%;
+}
+hr{
+    border-bottom: solid 2px grey;
+    margin: 1rem 0;
+    width: 60%;
 }
 .welcome h1{
     color:  rgb(21, 94,239);
@@ -87,7 +118,7 @@ main,section{
     font-weight: 600;
     line-height: 67.2px;
 }
-main button{
+.main button{
     background-color: rgb( 21, 94,239);
     border-radius: 5px;
     padding: 1.5% 2%;
@@ -162,7 +193,6 @@ main button{
 }
 .project ul{
     margin: 2% 0 2% 10%;
-    padding:3%;
     width: 100%;
 }
 .kid{
@@ -201,25 +231,68 @@ footer{
     padding: 1% 0;
     letter-spacing: .5px;
 }
+
 .hamburger{
     display: none;
+    position: relative;
+    z-index: 9;
+    transition: all .5s ease-in-out;
 }
 @media screen and (max-width:768px){
     nav{
+        display: flex;
+        position: fixed;
+        height: calc(100vh-60px);
+        left: 0;
+        z-index: 6;
+        top: 0px;
+        width: 100%;
+        flex-direction: column;
+        background-color: #f5f5f5;
+        transform: translateX(100%);
+    }
+    nav ul{
+        justify-content: center;
+        flex-direction: column;
+        margin: 0;
+        row-gap: 1.5rem;
+    }
+    nav ul li:first-child{
+        margin-right: 0rem;
+    }
+    nav ul li:last-child{
+        margin-left: 0rem;
+        border: solid 1px rgb(21, 94,239);
+        border-radius: 5px;
+        padding: 5px;
+        color: rgb(21, 94,239);
+    }
+    .hamburger:hover .line:first-child{
+        transform: rotate(135deg) translateY(-5px);
+    }
+    .hamburger:hover .line:nth-child(2){
         display: none;
+    }
+    .hamburger:hover .line:nth-child(3){
+        transform: rotate(-135deg) translateY(5px);
+    }
+    nav.active{
+        transform: translateX(0);
     }
     .line{
         width: 1.5rem;
         margin-bottom: 5px;
-        height: 5px;
+        height: 3px;
+        border-radius: 12px;
         background-color: black;
+        /* z-index: ; */
         cursor: pointer;
-
+        transition: all .5s ease-in-out;
     }
     .hamburger{
         display: block;
     }
-    main{
+    .main{
         flex-direction: column;
         align-items: center;
         row-gap: 1rem;
